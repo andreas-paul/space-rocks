@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm33hgqlyaajx"]
+
+[ext_resource type="Script" uid="uid://6cjn5ng2rd05" path="res://scenes/mother_ship.gd" id="1_0t1ur"]
+[ext_resource type="Texture2D" uid="uid://bogq3pm83y6dl" path="res://assets/art/mothership.png" id="1_fb080"]
+
+[node name="MotherShip" type="CharacterBody2D" node_paths=PackedStringArray("timer", "shoot_timer")]
+script = ExtResource("1_0t1ur")
+timer = NodePath("Timer")
+shoot_timer = NodePath("ShootTimer")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.49999, 1)
+scale = Vector2(12.65, 2.6)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.3, 0.3)
+polygon = PackedVector2Array(-37, -70, -44, -63, -70, -56, -82, -52, -93, -46, -101, -40, -105, -33, -107, -27, -139, -19, -162, -11, -180, -1, -191, 9, -195, 18, -194, 27, -188, 36, -173, 47, -158, 55, -124, 65, -102, 69, -77, 73, -42, 77, 0, 78, 44, 77, 70, 74, 93, 71, 112, 68, 137, 62, 154, 56, 165, 51, 174, 47, 182, 41, 188, 36, 192, 31, 195, 25, 195, 18, 193, 12, 188, 5, 180, 0, 180, 0, 164, -9, 150, -15, 131, -21, 106, -26, 106, -31, 100, -41, 83, -51, 60, -59, 43, -62, 39, -68, 26, -74, 12, -78, 1, -78, -9, -78, -22, -76, -30, -73)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_fb080")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -24)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

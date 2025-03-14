@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cirwi5ppxo78h"]
+
+[ext_resource type="FontFile" uid="uid://cuw06xrfst7qf" path="res://assets/fonts/kenvector_future.ttf" id="1_3o6cn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3m5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88mqn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ttr4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_krph2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w05mn"]
+
+[resource]
+Button/fonts/font = ExtResource("1_3o6cn")
+Button/styles/disabled = SubResource("StyleBoxEmpty_h3m5a")
+Button/styles/focus = SubResource("StyleBoxEmpty_88mqn")
+Button/styles/hover = SubResource("StyleBoxEmpty_7ttr4")
+Button/styles/normal = SubResource("StyleBoxEmpty_krph2")
+Button/styles/pressed = SubResource("StyleBoxEmpty_w05mn")

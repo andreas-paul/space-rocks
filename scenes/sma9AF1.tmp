@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://da66xpf2r8dqf"]
+
+[ext_resource type="Script" path="res://scenes/small_asteroid.gd" id="1_n5g2b"]
+[ext_resource type="Texture2D" uid="uid://cbmle6iun2sv6" path="res://assets/art/asteroid_small_1.png" id="2_cygb7"]
+[ext_resource type="PackedScene" uid="uid://c1vp5pqc56168" path="res://scenes/tiny_asteroid.tscn" id="2_x20u8"]
+[ext_resource type="PackedScene" uid="uid://cu1yel586v0m2" path="res://scenes/asteroid_explosion.tscn" id="3_5qulm"]
+
+[node name="SmallAsteroid" type="CharacterBody2D" groups=["Asteroids"]]
+z_as_relative = false
+input_pickable = true
+script = ExtResource("1_n5g2b")
+tiny_asteroid_scene = ExtResource("2_x20u8")
+particles = ExtResource("3_5qulm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(17, -31, 28, -22, 32, -7, 32, 11, 31, 20, 22, 30, 13, 35, 1, 35, -9, 31, -21, 23, -31, 10, -33, -5, -28, -20, -18, -30, -5, -35, 6, -35)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cygb7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(3.5, 3.7)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

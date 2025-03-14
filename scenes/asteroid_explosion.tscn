@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5orb05e4y6ci"]
+
+[ext_resource type="Texture2D" uid="uid://c5mvu1qcbp0ln" path="res://assets/art/asteroid_particle.png" id="1_trm4u"]
+
+[sub_resource type="Curve" id="Curve_sb1fy"]
+_data = [Vector2(0, 1), 0.0, -0.827864, 0, 0, Vector2(0.685864, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xyjey"]
+curve = SubResource("Curve_sb1fy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2khlc"]
+lifetime_randomness = 0.3
+emission_shape_scale = Vector3(100, 100, 100)
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 196.86
+initial_velocity_max = 358.15
+angular_velocity_min = -104.64
+angular_velocity_max = 59.79
+radial_velocity_min = -89.68
+radial_velocity_max = 161.44
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -6.92
+linear_accel_max = 7.61
+radial_accel_min = -10.42
+radial_accel_max = 11.41
+scale_min = 0.1
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_xyjey")
+
+[node name="AsteroidExplosion" type="GPUParticles2D"]
+top_level = true
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_2khlc")
+texture = ExtResource("1_trm4u")
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.4
+explosiveness = 0.87
+visibility_rect = Rect2(0, 0, 1920, 1080)
+
+[connection signal="finished" from="." to="." method="_on_finished"]

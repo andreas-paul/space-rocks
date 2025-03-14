@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://befg7wd6vvcx4"]
+
+[ext_resource type="Texture2D" uid="uid://cdf65fl46u5nl" path="res://assets/art/particle_flame.png" id="1_2bacw"]
+[ext_resource type="Script" uid="uid://cpfircdv87w3b" path="res://scenes/player_ship_engine_exhaust.gd" id="2_5vfms"]
+
+[sub_resource type="Curve" id="Curve_cj7hc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pitrv"]
+curve = SubResource("Curve_cj7hc")
+
+[sub_resource type="Gradient" id="Gradient_anwdb"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.128889, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.658942, 0.338249, 0.169641, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yvd6m"]
+gradient = SubResource("Gradient_anwdb")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_ao5bh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m065f"]
+curve = SubResource("Curve_ao5bh")
+
+[sub_resource type="Curve" id="Curve_6b4b6"]
+_data = [Vector2(0, 1), 0.0, -1.00125, 0, 0, Vector2(0.996109, 0.000792384), -1.001, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ivbjp"]
+width = 512
+curve = SubResource("Curve_6b4b6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mhm6d"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 1.0
+initial_velocity_min = 400.0
+initial_velocity_max = 450.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -19.38
+linear_accel_max = 16.61
+scale_min = 0.04
+scale_max = 0.04
+scale_curve = SubResource("CurveTexture_ivbjp")
+color = Color(0.837979, 0.594337, 0.472224, 1)
+color_ramp = SubResource("GradientTexture1D_yvd6m")
+alpha_curve = SubResource("CurveTexture_pitrv")
+emission_curve = SubResource("CurveTexture_m065f")
+turbulence_enabled = true
+turbulence_noise_strength = 2.2
+turbulence_noise_scale = 1.0
+turbulence_noise_speed_random = 0.09
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+
+[node name="PlayerShipEngineExhaust" type="GPUParticles2D"]
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_mhm6d")
+texture = ExtResource("1_2bacw")
+lifetime = 0.05
+interpolate = false
+visibility_rect = Rect2(-10, 0, 20, 50)
+local_coords = true
+trail_lifetime = 0.1
+trail_sections = 2
+trail_section_subdivisions = 2
+script = ExtResource("2_5vfms")

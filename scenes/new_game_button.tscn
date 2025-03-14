@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgop8sh82kxqc"]
+
+[ext_resource type="Texture2D" uid="uid://c5q7lqdpshv16" path="res://assets/art/new_game_normal.png" id="1_vyxma"]
+[ext_resource type="Script" uid="uid://ca65n8pyj1app" path="res://scenes/press_space_to_start_button.gd" id="2_yn6k7"]
+
+[node name="NewGameButton" type="TextureRect"]
+offset_right = 409.0
+offset_bottom = 84.0
+pivot_offset = Vector2(204, 42)
+texture = ExtResource("1_vyxma")
+stretch_mode = 2
+script = ExtResource("2_yn6k7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

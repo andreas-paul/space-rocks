@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddi3es53uoy6a"]
+
+[ext_resource type="Script" uid="uid://bp0ikdef8umsn" path="res://scenes/user_interface.gd" id="1_kls34"]
+[ext_resource type="FontFile" uid="uid://cuw06xrfst7qf" path="res://assets/fonts/kenvector_future.ttf" id="2_cskea"]
+
+[node name="UserInterface" type="MarginContainer" node_paths=PackedStringArray("score_number", "health_bar")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_kls34")
+score_number = NodePath("HBoxContainer/ScoreNumber")
+health_bar = NodePath("HBoxContainer2/CenterContainer/ProgressBar")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_cskea")
+theme_override_font_sizes/font_size = 40
+text = "SCORE:"
+
+[node name="ScoreNumber" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_cskea")
+theme_override_font_sizes/font_size = 40
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer2/CenterContainer"]
+modulate = Color(0.600757, 0.975563, 0.675163, 1)
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+mouse_filter = 2
+step = 1.0
+value = 100.0
+rounded = true
+fill_mode = 1
+show_percentage = false
+
+[node name="PlayerHealthBarLabel" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_cskea")
+theme_override_font_sizes/font_size = 40
+text = "HEALTH"

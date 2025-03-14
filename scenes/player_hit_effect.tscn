@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dful522t54sp3"]
+
+[sub_resource type="Curve" id="Curve_ec03s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.361446, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_04vlg"]
+curve = SubResource("Curve_ec03s")
+
+[sub_resource type="Curve" id="Curve_1qk6g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.331325, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7mtw7"]
+curve = SubResource("Curve_1qk6g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pdooq"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 65.0
+initial_velocity_max = 65.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -25.0
+radial_accel_max = 20.0
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_7mtw7")
+alpha_curve = SubResource("CurveTexture_04vlg")
+
+[node name="PlayerHitEffect" type="GPUParticles2D"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.96
+process_material = SubResource("ParticleProcessMaterial_pdooq")

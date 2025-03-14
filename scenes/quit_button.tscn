@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8mbksl1dp5du"]
+
+[ext_resource type="Texture2D" uid="uid://cnjw7em3ismkk" path="res://assets/art/quit_normal.png" id="1_w548i"]
+[ext_resource type="Script" uid="uid://c4vxcfelblhvr" path="res://scenes/quit_button.gd" id="2_oan0e"]
+
+[node name="QuitButton" type="TextureRect"]
+pivot_offset = Vector2(90, 46)
+texture = ExtResource("1_w548i")
+stretch_mode = 2
+script = ExtResource("2_oan0e")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

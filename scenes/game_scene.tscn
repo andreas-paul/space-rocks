@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://bhha20uom4ocs"]
+
+[ext_resource type="Texture2D" uid="uid://cmg4d6vrwa0kl" path="res://assets/art/starrynight.png" id="1_6imny"]
+[ext_resource type="Script" uid="uid://cg5dvpb135e4" path="res://scenes/game_scene.gd" id="1_vjigu"]
+[ext_resource type="AudioStream" uid="uid://clr0xwi0wrbjy" path="res://assets/sounds/deep_rumble.mp3" id="1_wktsg"]
+[ext_resource type="Texture2D" uid="uid://d0ccpggmp5gwo" path="res://assets/art/star_new.png" id="2_yfuxl"]
+[ext_resource type="PackedScene" uid="uid://cp512ph42dvju" path="res://scenes/player_ship.tscn" id="3_d3jtd"]
+[ext_resource type="Texture2D" uid="uid://dxywgdqaliv4s" path="res://assets/art/planet06.png" id="3_hcnsb"]
+[ext_resource type="Texture2D" uid="uid://yh7m1b5r57ij" path="res://assets/art/planet04.png" id="4_xsopa"]
+[ext_resource type="PackedScene" uid="uid://s30cdqehklnv" path="res://scenes/asteroid.tscn" id="9_pmvaq"]
+[ext_resource type="PackedScene" uid="uid://bm33hgqlyaajx" path="res://scenes/mother_ship.tscn" id="10_ahq0e"]
+[ext_resource type="PackedScene" uid="uid://ddi3es53uoy6a" path="res://scenes/user_interface.tscn" id="10_o6xsf"]
+
+[sub_resource type="Environment" id="Environment_o002m"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.37
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.31
+glow_bloom = 0.56
+adjustment_enabled = true
+adjustment_saturation = 1.12
+
+[sub_resource type="Curve" id="Curve_6nhvb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.235772, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.752033, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_lq0ub"]
+width = 2048
+curve = SubResource("Curve_6nhvb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdgcw"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 1)
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 9.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_lq0ub")
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_vjigu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o002m")
+
+[node name="BackgroundNoise" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(957, 543)
+stream = ExtResource("1_wktsg")
+volume_db = -2.0
+autoplay = true
+parameters/looping = true
+
+[node name="StarryNightBackground" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_6imny")
+
+[node name="FlickeringStars" type="GPUParticles2D" parent="."]
+position = Vector2(960, 540)
+amount = 20
+texture = ExtResource("2_yfuxl")
+lifetime = 20.0
+preprocess = 10.0
+explosiveness = 0.2
+randomness = 0.2
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+process_material = SubResource("ParticleProcessMaterial_vdgcw")
+
+[node name="PlanetBackground" type="Node2D" parent="."]
+
+[node name="Planet06" type="Sprite2D" parent="PlanetBackground"]
+modulate = Color(0.366595, 0.366595, 0.366595, 1)
+position = Vector2(237, 659)
+scale = Vector2(0.0324218, 0.0324218)
+texture = ExtResource("3_hcnsb")
+
+[node name="Planet04" type="Sprite2D" parent="PlanetBackground"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+position = Vector2(335, 685)
+scale = Vector2(0.185937, 0.185937)
+texture = ExtResource("4_xsopa")
+
+[node name="PlayerShip" parent="." instance=ExtResource("3_d3jtd")]
+position = Vector2(960, 535)
+
+[node name="Timer" type="Timer" parent="." groups=["Asteroids"]]
+autostart = true
+
+[node name="Asteroid" parent="." instance=ExtResource("9_pmvaq")]
+position = Vector2(1571, 242)
+rotation = -2.21785
+
+[node name="Asteroid2" parent="." instance=ExtResource("9_pmvaq")]
+position = Vector2(447, 256)
+
+[node name="Asteroid3" parent="." instance=ExtResource("9_pmvaq")]
+position = Vector2(630, 757)
+rotation = 1.39209
+
+[node name="Asteroid4" parent="." instance=ExtResource("9_pmvaq")]
+position = Vector2(1120, 899)
+rotation = -0.703413
+
+[node name="Asteroid5" parent="." instance=ExtResource("9_pmvaq")]
+position = Vector2(1684, 697)
+rotation = -2.68036
+
+[node name="MotherShip" parent="." instance=ExtResource("10_ahq0e")]
+position = Vector2(-154, 968)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99
+
+[node name="UserInterface" parent="CanvasLayer" instance=ExtResource("10_o6xsf")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

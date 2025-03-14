@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjy75fxnje0ib"]
+
+[ext_resource type="AudioStream" uid="uid://pq7vrj77ts6i" path="res://assets/sounds/asteroid-explosions.wav" id="1_gee85"]
+[ext_resource type="AudioStream" uid="uid://vkle36oye1hj" path="res://assets/music/Asteroids_main-menu_loop3.wav" id="2_o44vw"]
+[ext_resource type="Script" uid="uid://mvrnl8mvr7yi" path="res://scenes/music.gd" id="2_rw7w3"]
+[ext_resource type="AudioStream" uid="uid://qfhhyyly6p7d" path="res://assets/sounds/shoot.wav" id="3_78htw"]
+[ext_resource type="Script" uid="uid://blrv42gmrcl1h" path="res://scenes/sounds.gd" id="5_fpryb"]
+[ext_resource type="AudioStream" uid="uid://di2cyn646kysy" path="res://assets/music/Loop 2.wav" id="5_p7go3"]
+[ext_resource type="AudioStream" uid="uid://cq8k62082ptp5" path="res://assets/sounds/shoot_new.ogg" id="6_02gw7"]
+[ext_resource type="AudioStream" uid="uid://hybwo0qsylya" path="res://assets/sounds/Fire Beam Hum or Engine Rumble - 01    [006240].wav" id="7_reyey"]
+
+[node name="AudioManager" type="Node2D"]
+process_mode = 3
+metadata/_edit_vertical_guides_ = [-121.0]
+
+[node name="Music" type="Node2D" parent="." node_paths=PackedStringArray("main_menu_music", "game_scene_music")]
+script = ExtResource("2_rw7w3")
+main_menu_music = NodePath("MainMenuMusic")
+game_scene_music = NodePath("GameSceneMusic")
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("2_o44vw")
+volume_db = -80.0
+
+[node name="GameSceneMusic" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("5_p7go3")
+volume_db = -80.0
+
+[node name="Sounds" type="Node2D" parent="." node_paths=PackedStringArray("asteroid_explosion", "cannon_sound", "engine_rumble", "ufo_cannon_sound")]
+script = ExtResource("5_fpryb")
+asteroid_explosion = NodePath("AsteroidExplosion")
+cannon_sound = NodePath("CannonSound")
+engine_rumble = NodePath("EngineRumble")
+ufo_cannon_sound = NodePath("UfoCannonSound")
+
+[node name="AsteroidExplosion" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("1_gee85")
+volume_db = 10.0
+pitch_scale = 0.3
+max_polyphony = 10
+
+[node name="CannonSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_02gw7")
+volume_db = -5.0
+
+[node name="EngineRumble" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("7_reyey")
+volume_db = 3.0
+pitch_scale = 0.5
+
+[node name="UfoCannonSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("3_78htw")
+
+[node name="PlayerDeathSound" type="Node2D" parent="."]

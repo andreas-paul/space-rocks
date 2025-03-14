@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://clbmsc70gipdq"]
+
+[ext_resource type="Script" uid="uid://dse1qva44yomf" path="res://scenes/main_menu.gd" id="1_hdey4"]
+[ext_resource type="Texture2D" uid="uid://cmg4d6vrwa0kl" path="res://assets/art/starrynight.png" id="2_bq71w"]
+[ext_resource type="Texture2D" uid="uid://d0ccpggmp5gwo" path="res://assets/art/star_new.png" id="3_b5a27"]
+[ext_resource type="PackedScene" uid="uid://8i1g42grltav" path="res://scenes/main_menu_ui.tscn" id="3_pmqx8"]
+[ext_resource type="Texture2D" uid="uid://dxywgdqaliv4s" path="res://assets/art/planet06.png" id="4_2ctch"]
+[ext_resource type="Texture2D" uid="uid://yh7m1b5r57ij" path="res://assets/art/planet04.png" id="4_6axj3"]
+
+[sub_resource type="Curve" id="Curve_otywo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.235772, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.752033, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_xxfwu"]
+width = 2048
+curve = SubResource("Curve_otywo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mb1dm"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 1)
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 9.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_xxfwu")
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_hdey4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_bq71w")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(960, 540)
+amount = 20
+texture = ExtResource("3_b5a27")
+lifetime = 20.0
+preprocess = 10.0
+explosiveness = 0.2
+randomness = 0.2
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+process_material = SubResource("ParticleProcessMaterial_mb1dm")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Planet06" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.366595, 0.366595, 0.366595, 1)
+position = Vector2(237, 659)
+scale = Vector2(0.0324218, 0.0324218)
+texture = ExtResource("4_2ctch")
+
+[node name="Planet04" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+position = Vector2(335, 685)
+scale = Vector2(0.185937, 0.185937)
+texture = ExtResource("4_6axj3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="MainMenuUI" parent="CanvasLayer" instance=ExtResource("3_pmqx8")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://s30cdqehklnv"]
+
+[ext_resource type="Script" uid="uid://bdta2jknvytq8" path="res://scenes/asteroid.gd" id="1_xtbcx"]
+[ext_resource type="PackedScene" uid="uid://da66xpf2r8dqf" path="res://scenes/small_asteroid.tscn" id="2_svsyp"]
+[ext_resource type="Texture2D" uid="uid://cm8scaiaey1gv" path="res://assets/art/asteroid.png" id="4_tlbd4"]
+[ext_resource type="PackedScene" uid="uid://c5orb05e4y6ci" path="res://scenes/asteroid_explosion.tscn" id="6_dmmpd"]
+
+[node name="Asteroid" type="CharacterBody2D" groups=["Asteroids"]]
+z_as_relative = false
+position = Vector2(0, 1)
+collision_layer = 2
+input_pickable = true
+script = ExtResource("1_xtbcx")
+small_asteroid_scene = ExtResource("2_svsyp")
+particles = ExtResource("6_dmmpd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-46, -92, -59, -83, -70, -69, -78, -54, -82, -34, -82, -10, -76, 8, -67, 27, -61, 34, -54, 48, -40, 65, -27, 78, -11, 86, -2, 89, 10, 89, 23, 86, 34, 76, 40, 63, 41, 55, 51, 47, 58, 36, 65, 21, 68, 9, 69, 0, 77, -16, 81, -28, 82, -42, 79, -56, 69, -69, 57, -74, 40, -73, 30, -82, 13, -92, -4, -97, -20, -98, -34, -97)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_tlbd4")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(2.74479e-08, 4.76047e-07)
+enable_node_path = NodePath("../VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(-0.597758, -3.55566)
+scale = Vector2(8.89112, 10.4033)
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
