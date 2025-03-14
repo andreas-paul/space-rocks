@@ -1,3 +1,3 @@
-![](screenshots\title.png)
+![](title.png)
 
-![](screenshots\game.png)
+![](game.png)
