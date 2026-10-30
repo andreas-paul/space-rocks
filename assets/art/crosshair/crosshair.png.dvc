@@ -1,0 +1,5 @@
+outs:
+- md5: 28e1aa63b90471b78b7e51e241da7a6a
+  size: 133
+  hash: md5
+  path: crosshair.png
