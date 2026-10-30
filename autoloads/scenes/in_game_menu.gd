@@ -1,10 +1,9 @@
 extends CanvasLayer
 
-var can_open : bool = true
+var can_open: bool = true
 
 
 func _input(event: InputEvent) -> void:
-
 	if can_open and Input.is_action_just_released("ui_cancel"):
 		if visible:
 			visible = false
