@@ -125,5 +125,4 @@ toggle_fullscreen={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/fallback_to_vulkan=false
-renderer/rendering_method="gl_compatibility"
 viewport/hdr_2d=true
