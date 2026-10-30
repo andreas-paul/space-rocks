@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://bhha20uom4ocs"]
+
+[ext_resource type="Texture2D" uid="uid://cmg4d6vrwa0kl" path="res://assets/art/game/starrynight.png" id="1_6imny"]
+[ext_resource type="Script" uid="uid://cg5dvpb135e4" path="res://scenes/levels/game_scene.gd" id="1_vjigu"]
+[ext_resource type="Texture2D" uid="uid://d0ccpggmp5gwo" path="res://assets/art/star_new.png" id="2_yfuxl"]
+[ext_resource type="PackedScene" uid="uid://cp512ph42dvju" path="res://scenes/player/player_ship.tscn" id="3_d3jtd"]
+[ext_resource type="Texture2D" uid="uid://cehi5sli48gbu" path="res://assets/art/game/A001_OrangeGiant_03-128x128.png" id="8_b5spy"]
+[ext_resource type="PackedScene" uid="uid://s30cdqehklnv" path="res://scenes/asteroid/asteroid.tscn" id="9_pmvaq"]
+[ext_resource type="Texture2D" uid="uid://cwpyypgmh8rpw" path="res://assets/art/game/A001_Sun_Yellow_03-128x128.png" id="9_utbpp"]
+[ext_resource type="PackedScene" uid="uid://bm33hgqlyaajx" path="res://scenes/mother_ship/mother_ship.tscn" id="10_ahq0e"]
+[ext_resource type="PackedScene" uid="uid://ddi3es53uoy6a" path="res://scenes/ui_elements/user_interface.tscn" id="10_o6xsf"]
+[ext_resource type="AudioStream" uid="uid://1xm7ecc1251f" path="res://assets/audio/sounds/deep_rumble.mp3" id="deep_rumble"]
+
+[sub_resource type="Environment" id="Environment_o002m"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 1.37
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.31
+glow_bloom = 0.56
+adjustment_enabled = true
+adjustment_saturation = 1.12
+
+[sub_resource type="Curve" id="Curve_6nhvb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.235772, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.752033, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_lq0ub"]
+width = 2048
+curve = SubResource("Curve_6nhvb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdgcw"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 1)
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 9.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_lq0ub")
+
+[node name="GameScene" type="Node2D" unique_id=1229733343]
+script = ExtResource("1_vjigu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1261977517]
+environment = SubResource("Environment_o002m")
+
+[node name="BackgroundNoise" type="AudioStreamPlayer2D" parent="." unique_id=127768701]
+position = Vector2(957, 543)
+stream = ExtResource("deep_rumble")
+volume_db = -2.0
+
+[node name="StarryNightBackground" type="Sprite2D" parent="." unique_id=1341768967]
+position = Vector2(960, 540)
+texture = ExtResource("1_6imny")
+
+[node name="FlickeringStars" type="GPUParticles2D" parent="." unique_id=686408707]
+position = Vector2(960, 540)
+amount = 20
+texture = ExtResource("2_yfuxl")
+lifetime = 20.0
+preprocess = 10.0
+explosiveness = 0.2
+randomness = 0.2
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+process_material = SubResource("ParticleProcessMaterial_vdgcw")
+
+[node name="PlanetBackground" type="Node2D" parent="." unique_id=1872511871]
+
+[node name="A001SunYellow03128x128" type="Sprite2D" parent="PlanetBackground" unique_id=491662803]
+self_modulate = Color(2.699, 2.699, 2.699, 1)
+texture_filter = 1
+position = Vector2(1656.6249, 328.62494)
+scale = Vector2(0.19336027, 0.19336003)
+texture = ExtResource("9_utbpp")
+
+[node name="A001OrangeGiant03128x128" type="Sprite2D" parent="PlanetBackground" unique_id=1599475168]
+self_modulate = Color(1, 1, 1, 0.28100002)
+position = Vector2(341, 834.00006)
+rotation = 0.10458228
+texture = ExtResource("8_b5spy")
+
+[node name="PlayerShip" parent="." unique_id=2072602219 instance=ExtResource("3_d3jtd")]
+position = Vector2(960, 535)
+
+[node name="Timer" type="Timer" parent="." unique_id=1916805990 groups=["Asteroids"]]
+autostart = true
+
+[node name="Asteroid" parent="." unique_id=256896957 instance=ExtResource("9_pmvaq")]
+position = Vector2(1571, 242)
+rotation = -2.21785
+
+[node name="Asteroid2" parent="." unique_id=352388835 instance=ExtResource("9_pmvaq")]
+position = Vector2(447, 256)
+
+[node name="Asteroid4" parent="." unique_id=1690311251 instance=ExtResource("9_pmvaq")]
+position = Vector2(1120, 899)
+rotation = -0.703413
+
+[node name="MotherShip" parent="." unique_id=705240017 groups=["MotherShip"] instance=ExtResource("10_ahq0e")]
+position = Vector2(-154, 968)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1673899654]
+layer = 99
+
+[node name="UserInterface" parent="CanvasLayer" unique_id=1313408559 instance=ExtResource("10_o6xsf")]
+offset_left = 15.0
+offset_top = -12.0
+offset_right = 15.0
+offset_bottom = -12.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

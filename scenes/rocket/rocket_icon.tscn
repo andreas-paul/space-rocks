@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://rmubxnkxe774"]
+
+[ext_resource type="Script" uid="uid://ctrrnc4x4l3ub" path="res://scenes/rocket/rocket_icon.gd" id="1_usggj"]
+
+[node name="RocketIcon" type="Control" unique_id=701621334]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -115.0
+offset_right = 95.0
+offset_bottom = -35.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_usggj")

@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Asteroids"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/ui_elements/main_menu.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -32,7 +32,7 @@ Utils="*res://autoloads/utils.gd"
 Events="*res://autoloads/events.gd"
 SaveManager="*res://autoloads/save_manager.gd"
 ScoreManager="*res://autoloads/score_manager.gd"
-AudioManager="*res://scenes/audio_manager.tscn"
+AudioManager="*res://scenes/managers/audio_manager.tscn"
 GameManager="*res://autoloads/game_manager.gd"
 InGameMenu="*res://autoloads/scenes/in_game_menu.tscn"
 SignalLens="*res://addons/signal_lens/autoload/signal_lens_autoload.gd"

@@ -1,44 +1,16 @@
 [gd_scene format=3 uid="uid://b02rbissejoso"]
 
 [ext_resource type="Script" uid="uid://chbch31wcd1t" path="res://autoloads/scenes/in_game_menu.gd" id="1_eglj2"]
-[ext_resource type="Shader" uid="uid://dsgq0dpl5fsu7" path="res://autoloads/scenes/in_game_menu.gdshader" id="2_ojhqa"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mksr5"]
-shader = ExtResource("2_ojhqa")
-shader_parameter/blur_amount = 2.016
-shader_parameter/mix_amount = 0.088
-shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjpig"]
-bg_color = Color(0.333333, 0.333333, 0.333333, 0.752941)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.233925, 0.233925, 0.233925, 1)
-border_blend = true
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+bg_color = Color(0, 0, 0, 0.65)
 
-[node name="InGameMenu" type="Control" unique_id=704212631]
+[node name="InGameMenu" type="CanvasLayer" unique_id=704212631]
 process_mode = 3
-visible = false
-z_index = 99
-z_as_relative = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+layer = 100
 script = ExtResource("1_eglj2")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=933644276]
-material = SubResource("ShaderMaterial_mksr5")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

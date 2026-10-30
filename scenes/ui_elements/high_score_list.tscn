@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://d2khpdkx8ramq" path="res://scenes/ui_elements/high_score_list.gd" id="1_high_scores"]
+[ext_resource type="FontFile" uid="uid://cuw06xrfst7qf" path="res://assets/fonts/kenvector_future.ttf" id="2_font"]
+
+[node name="HighScoreList" type="CanvasLayer" node_paths=PackedStringArray("rows", "empty_label")]
+layer = 10
+visible = false
+script = ExtResource("1_high_scores")
+rows = NodePath("CenterContainer/VBoxContainer/Rows")
+empty_label = NodePath("CenterContainer/VBoxContainer/EmptyLabel")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.85)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "HIGH SCORES"
+horizontal_alignment = 1
+
+[node name="EmptyLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "NO SCORES YET"
+horizontal_alignment = 1
+
+[node name="Rows" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 52
+focus_mode = 0
+text = "BACK"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

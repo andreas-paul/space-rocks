@@ -1,0 +1,98 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bmfaih0uplgsp" path="res://scenes/ui_elements/game_over_screen.gd" id="1_game_over"]
+
+[node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("title_label", "score_label", "high_score_label", "name_entry", "name_edit", "save_button", "end_buttons")]
+process_mode = 3
+layer = 99
+visible = false
+script = ExtResource("1_game_over")
+title_label = NodePath("CenterContainer/VBoxContainer/TitleLabel")
+score_label = NodePath("CenterContainer/VBoxContainer/ScoreLabel")
+high_score_label = NodePath("CenterContainer/VBoxContainer/HighScoreLabel")
+name_entry = NodePath("CenterContainer/VBoxContainer/NameEntry")
+name_edit = NodePath("CenterContainer/VBoxContainer/NameEntry/NameEdit")
+save_button = NodePath("CenterContainer/VBoxContainer/NameEntry/SaveButton")
+end_buttons = NodePath("CenterContainer/VBoxContainer/EndButtons")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "YOU WON"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SCORE: 0"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "HIGH SCORE: 0"
+horizontal_alignment = 1
+
+[node name="NameEntry" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="NameEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/NameEntry"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+placeholder_text = "AAA"
+alignment = 1
+max_length = 3
+
+[node name="SaveButton" type="Button" parent="CenterContainer/VBoxContainer/NameEntry"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "SAVE"
+
+[node name="SkipButton" type="Button" parent="CenterContainer/VBoxContainer/NameEntry"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SKIP"
+
+[node name="EndButtons" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="PlayAgainButton" type="Button" parent="CenterContainer/VBoxContainer/EndButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PLAY AGAIN"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer/EndButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "MAIN MENU"
+
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/NameEntry/NameEdit" to="." method="_on_name_edit_text_changed"]
+[connection signal="text_submitted" from="CenterContainer/VBoxContainer/NameEntry/NameEdit" to="." method="_on_name_edit_text_submitted"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NameEntry/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NameEntry/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/EndButtons/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/EndButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

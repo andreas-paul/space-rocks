@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b60i4b2tvumx6"]
+
+[ext_resource type="Script" uid="uid://cfyhilxu1cq3y" path="res://scenes/power_up/power_up.gd" id="1_ru046"]
+[ext_resource type="Shader" uid="uid://jmcf4gbtc681" path="res://scenes/power_up/power_up.gdshader" id="2_xn50g"]
+[ext_resource type="Texture2D" uid="uid://cw8lkbldwd88y" path="res://assets/art/power_up/power_up.png" id="3_c562r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 20.396078
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ig136"]
+shader = ExtResource("2_xn50g")
+shader_parameter/keep_art_colors = false
+shader_parameter/glow_color = Color(0, 0, 0, 1)
+shader_parameter/intensity = 0.0
+
+[node name="PowerUp" type="Node2D" unique_id=63207192]
+script = ExtResource("1_ru046")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=973735702]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1312559155]
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="PowerUp" type="Sprite2D" parent="." unique_id=1008841407]
+material = SubResource("ShaderMaterial_ig136")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_c562r")

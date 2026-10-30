@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var bullet = preload("res://scenes/bullet.tscn")
+@onready var bullet = preload("res://scenes/bullet/bullet.tscn")
+var can_shoot : bool
 
 
 func shoot():

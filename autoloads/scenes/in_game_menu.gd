@@ -1,9 +1,11 @@
-extends Control
+extends CanvasLayer
+
+var can_open : bool = true
 
 
 func _input(event: InputEvent) -> void:
 
-	if Input.is_action_just_released("ui_cancel"):
+	if can_open and Input.is_action_just_released("ui_cancel"):
 		if visible:
 			visible = false
 			get_tree().paused = false
