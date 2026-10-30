@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5orb05e4y6ci"]
+[gd_scene format=3 uid="uid://c5orb05e4y6ci"]
 
-[ext_resource type="Texture2D" uid="uid://c5mvu1qcbp0ln" path="res://assets/art/asteroid_particle.png" id="1_trm4u"]
+[ext_resource type="Texture2D" uid="uid://c5mvu1qcbp0ln" path="res://assets/art/asteroids/asteroid_particle.png" id="1_trm4u"]
 
 [sub_resource type="Curve" id="Curve_sb1fy"]
 _data = [Vector2(0, 1), 0.0, -0.827864, 0, 0, Vector2(0.685864, 0), 0.0, 0.0, 0, 0]

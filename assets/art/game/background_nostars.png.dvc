@@ -1,0 +1,5 @@
+outs:
+- md5: 66b035f7873cd1abdd4dc781d5ed9e5f
+  size: 1146
+  hash: md5
+  path: background_nostars.png

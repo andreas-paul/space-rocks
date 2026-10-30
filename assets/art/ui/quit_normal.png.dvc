@@ -1,0 +1,5 @@
+outs:
+- md5: 0046d09a203980a372b57df6f8b05bd8
+  size: 2550
+  hash: md5
+  path: quit_normal.png

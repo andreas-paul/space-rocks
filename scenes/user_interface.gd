@@ -1,6 +1,5 @@
 extends MarginContainer
 
-
 @export var score_number : Label
 @export var health_bar : ProgressBar
 

@@ -50,7 +50,7 @@ func hit():
 	hitpoints -= 1
 	show_explosion()
 	if hitpoints <= 0:
-		Events.score.emit()
+		Events.score.emit(20)
 		var small_asteroid_position = global_position
 		hide()
 		for i in range(2):

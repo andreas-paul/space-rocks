@@ -1,0 +1,5 @@
+outs:
+- md5: 685ed630b8f06f3fffcd056cce10a5cb
+  size: 1313
+  hash: md5
+  path: asteroid_tiny.png

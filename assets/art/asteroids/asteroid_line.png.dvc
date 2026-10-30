@@ -1,0 +1,5 @@
+outs:
+- md5: 0b3a3b90ca16793cb0301d239e7881f6
+  size: 6261
+  hash: md5
+  path: asteroid_line.png

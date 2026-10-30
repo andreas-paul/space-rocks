@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://da66xpf2r8dqf"]
+[gd_scene format=3 uid="uid://da66xpf2r8dqf"]
 
 [ext_resource type="Script" uid="uid://cy6mvp3a2hfvm" path="res://scenes/small_asteroid.gd" id="1_n5g2b"]
-[ext_resource type="Texture2D" uid="uid://cbmle6iun2sv6" path="res://assets/art/asteroid_small_1.png" id="2_cygb7"]
+[ext_resource type="Texture2D" uid="uid://cbmle6iun2sv6" path="res://assets/art/asteroids/asteroid_small_1.png" id="2_cygb7"]
 [ext_resource type="PackedScene" uid="uid://c1vp5pqc56168" path="res://scenes/tiny_asteroid.tscn" id="2_x20u8"]
-[ext_resource type="Texture2D" uid="uid://c5mvu1qcbp0ln" path="res://assets/art/asteroid_particle.png" id="3_78pdr"]
+[ext_resource type="Texture2D" uid="uid://c5mvu1qcbp0ln" path="res://assets/art/asteroids/asteroid_particle.png" id="3_78pdr"]
 
 [sub_resource type="Curve" id="Curve_sb1fy"]
 _data = [Vector2(0, 1), 0.0, -0.827864, 0, 0, Vector2(0.685864, 0), 0.0, 0.0, 0, 0]

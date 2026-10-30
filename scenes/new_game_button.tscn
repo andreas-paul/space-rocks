@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgop8sh82kxqc"]
+[gd_scene format=3 uid="uid://dgop8sh82kxqc"]
 
-[ext_resource type="Texture2D" uid="uid://c5q7lqdpshv16" path="res://assets/art/new_game_normal.png" id="1_vyxma"]
+[ext_resource type="Texture2D" uid="uid://c5q7lqdpshv16" path="res://assets/art/ui/new_game_normal.png" id="1_vyxma"]
 [ext_resource type="Script" uid="uid://ca65n8pyj1app" path="res://scenes/press_space_to_start_button.gd" id="2_yn6k7"]
 
 [node name="NewGameButton" type="TextureRect"]

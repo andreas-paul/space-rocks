@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://clbmsc70gipdq"]
+[gd_scene format=3 uid="uid://clbmsc70gipdq"]
 
 [ext_resource type="Script" uid="uid://dse1qva44yomf" path="res://scenes/main_menu.gd" id="1_hdey4"]
-[ext_resource type="Texture2D" uid="uid://cmg4d6vrwa0kl" path="res://assets/art/starrynight.png" id="2_bq71w"]
+[ext_resource type="Texture2D" uid="uid://cmg4d6vrwa0kl" path="res://assets/art/game/starrynight.png" id="2_bq71w"]
 [ext_resource type="Texture2D" uid="uid://d0ccpggmp5gwo" path="res://assets/art/star_new.png" id="3_b5a27"]
 [ext_resource type="PackedScene" uid="uid://8i1g42grltav" path="res://scenes/main_menu_ui.tscn" id="3_pmqx8"]
-[ext_resource type="Texture2D" uid="uid://dxywgdqaliv4s" path="res://assets/art/planet06.png" id="4_2ctch"]
-[ext_resource type="Texture2D" uid="uid://yh7m1b5r57ij" path="res://assets/art/planet04.png" id="4_6axj3"]
 
 [sub_resource type="Curve" id="Curve_otywo"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.235772, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.752033, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -26,14 +24,14 @@ scale_min = 0.05
 scale_max = 0.1
 scale_curve = SubResource("CurveTexture_xxfwu")
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" unique_id=453860387]
 script = ExtResource("1_hdey4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1134727637]
 position = Vector2(960, 540)
 texture = ExtResource("2_bq71w")
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=796989423]
 position = Vector2(960, 540)
 amount = 20
 texture = ExtResource("3_b5a27")
@@ -44,26 +42,14 @@ randomness = 0.2
 visibility_rect = Rect2(-960, -540, 1920, 1080)
 process_material = SubResource("ParticleProcessMaterial_mb1dm")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="PlanetsInBackground" type="Node2D" parent="." unique_id=54250171]
 
-[node name="Planet06" type="Sprite2D" parent="Node2D"]
-modulate = Color(0.366595, 0.366595, 0.366595, 1)
-position = Vector2(237, 659)
-scale = Vector2(0.0324218, 0.0324218)
-texture = ExtResource("4_2ctch")
-
-[node name="Planet04" type="Sprite2D" parent="Node2D"]
-modulate = Color(0.266575, 0.266575, 0.266575, 1)
-position = Vector2(335, 685)
-scale = Vector2(0.185937, 0.185937)
-texture = ExtResource("4_6axj3")
-
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1907981978]
 wait_time = 2.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=760211950]
 layer = 2
 
-[node name="MainMenuUI" parent="CanvasLayer" instance=ExtResource("3_pmqx8")]
+[node name="MainMenuUI" parent="CanvasLayer" unique_id=795335042 instance=ExtResource("3_pmqx8")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

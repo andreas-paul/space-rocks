@@ -21,7 +21,7 @@ func _ready() -> void:
 	$RightEngineExhaust.lifetime = 0.02
 	stop_engine_rumble()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("fire"):
 		shoot()
 		
@@ -103,8 +103,8 @@ func stop_engine_rumble():
 	
 
 func shoot():
-	if can_shoot:
 
+	if can_shoot:
 		var b = bullet.instantiate()
 		b.transform = $LeftMuzzle.global_transform
 		var c = bullet.instantiate()
@@ -131,12 +131,17 @@ func hit():
 		Events.lost.emit()
 		queue_free()
 
+func heal():
+	hitpoints += 50
+	if hitpoints >= 100:
+		hitpoints = 100
 
 func show_explosion():
 	var ontplof = particles.instantiate() as GPUParticles2D
 	get_parent().add_child(ontplof)
 	ontplof.global_position = global_position
 	ontplof.emitting = true
+	AudioManager.get_node("Sounds").play_player_death_sound.emit()
 	return ontplof
 	
 func show_hit_effect():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b02rbissejoso"]
+[gd_scene format=3 uid="uid://b02rbissejoso"]
 
 [ext_resource type="Script" uid="uid://chbch31wcd1t" path="res://autoloads/scenes/in_game_menu.gd" id="1_eglj2"]
 [ext_resource type="Shader" uid="uid://dsgq0dpl5fsu7" path="res://autoloads/scenes/in_game_menu.gdshader" id="2_ojhqa"]
@@ -22,7 +22,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="InGameMenu" type="Control"]
+[node name="InGameMenu" type="Control" unique_id=704212631]
 process_mode = 3
 visible = false
 z_index = 99
@@ -36,7 +36,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_eglj2")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=933644276]
 material = SubResource("ShaderMaterial_mksr5")
 layout_mode = 1
 anchors_preset = 15
@@ -47,7 +47,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mjpig")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2062018027]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -57,27 +57,28 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=822974984]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 40
 
-[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=598893056]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "RESTART"
 
-[node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=129023927]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "OPTIONS"
 
-[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1697474189]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = " MAIN MENU"
 
-[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=164025464]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "QUIT"

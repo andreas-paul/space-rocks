@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 func _input(event: InputEvent) -> void:
 	
-	if Input.is_action_just_released("space"):
+	if Input.is_action_just_released("fire"):
 		Events.new_game.emit()
 		
 	if Input.is_action_just_released("ui_cancel"):

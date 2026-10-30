@@ -13,6 +13,8 @@ var can_shoot : bool = false
 var direction_to_player : Vector2
 var player
 
+@onready var particles = preload("res://scenes/mothership_death_explosion.tscn")
+@onready var PLAYER_HIT_EFFECT = preload("res://scenes/player_hit_effect.tscn")
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -31,21 +33,24 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = speed * delta * -1
 			move_and_slide()
-			
+
 func hit() -> void:
+	show_hit_effect()
 	hitpoints -= 1
 	if hitpoints <= 0:
 		destroyed()
-		
+
 func destroyed() -> void:
-	pass
+	show_explosion()
+	#await explosion.finished
+	Events.score.emit(100)
+	queue_free()
 
 func shoot() -> void:
 
 	var b = bullet.instantiate()
 	b.transform = $Muzzle.global_transform
-	owner.add_child(b)
-	
+	owner.add_child(b)	
 	AudioManager.get_node("Sounds").play_ufo_cannon_sound.emit()
 
 func _on_timer_timeout() -> void:
@@ -72,3 +77,17 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_shoot_timer_timeout() -> void:
 	shoot()
+	
+func show_explosion():
+	var ontplof = particles.instantiate() as GPUParticles2D
+	get_parent().add_child(ontplof)
+	ontplof.global_position = global_position
+	ontplof.emitting = true
+	AudioManager.get_node("Sounds").play_player_death_sound.emit()
+	return ontplof
+	
+func show_hit_effect():
+	var hit_effect = PLAYER_HIT_EFFECT.instantiate() as GPUParticles2D
+	get_parent().add_child(hit_effect)
+	hit_effect.global_position = global_position
+	hit_effect.emitting = true

@@ -64,7 +64,7 @@ func hit():
 		hitpoints -= 1
 		show_explosion()
 		if hitpoints <= 0:
-			Events.score.emit()
+			Events.score.emit(10)
 			AudioManager.get_node("Sounds").play_asteroid_explosion.emit()
 			var large_asteroid_position = global_position
 			hide()

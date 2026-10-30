@@ -1,5 +1,7 @@
-assets/
+assets/**
+!assets/**/
+!assets/**/*.dvc
 .godot/
-addons/
 test_scenes/
 2020
+!assets/**/*.dvc

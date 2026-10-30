@@ -37,7 +37,7 @@ func hit():
 	hitpoints -= 1
 	show_explosion()
 	if hitpoints <= 0:
-		Events.score.emit()
+		Events.score.emit(30)
 		queue_free()
 	
 		

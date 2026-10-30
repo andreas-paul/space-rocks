@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp512ph42dvju"]
+[gd_scene format=3 uid="uid://cp512ph42dvju"]
 
 [ext_resource type="Script" uid="uid://dn0tlek7f4q5w" path="res://scenes/player_ship.gd" id="1_m6mvt"]
-[ext_resource type="Texture2D" uid="uid://c2hungosn85jp" path="res://assets/art/player_ship.png" id="1_xapkk"]
+[ext_resource type="Texture2D" uid="uid://c2hungosn85jp" path="res://assets/art/player/player_ship.png" id="1_xapkk"]
 [ext_resource type="PackedScene" uid="uid://befg7wd6vvcx4" path="res://scenes/player_ship_engine_exhaust.tscn" id="2_38yss"]
 [ext_resource type="PackedScene" uid="uid://bshbc35m0p4oh" path="res://scenes/player_death_explosion.tscn" id="5_v2kci"]
 
@@ -42,33 +42,31 @@ _data = {
 &"death": SubResource("Animation_tyysx")
 }
 
-[node name="PlayerShip" type="CharacterBody2D" groups=["Player"]]
+[node name="PlayerShip" type="CharacterBody2D" unique_id=1254883298 groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_m6mvt")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, -44, -10, -35, -15, -24, -19, -13, -24, -5, -29, -1, -38, 5, -50, 12, -66, 26, -61, 33, -36, 38, -10, 40, 10, 40, 34, 38, 58, 34, 66, 29, 60, 18, 43, 6, 31, -3, 22, -8, 18, -16, 10, -34)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1786446082]
+polygon = PackedVector2Array(0, -44, -10, -35, -15, -24, -19, -13, -24, -5, -29, -1, -38, 5, -50, 12, -69, 24, -70, 33, -36, 38, -10, 40, 10, 40, 34, 38, 71, 33, 70, 25, 53, 13, 43, 6, 31, -3, 22, -8, 18, -16, 10, -34)
 
-[node name="LeftEngineExhaust" parent="." instance=ExtResource("2_38yss")]
-position = Vector2(-22, 36)
+[node name="LeftEngineExhaust" parent="." unique_id=1086924298 instance=ExtResource("2_38yss")]
+position = Vector2(-24, 36)
 
-[node name="RightEngineExhaust" parent="." instance=ExtResource("2_38yss")]
-position = Vector2(23, 36)
+[node name="RightEngineExhaust" parent="." unique_id=446776300 instance=ExtResource("2_38yss")]
+position = Vector2(24, 36)
 
-[node name="LeftMuzzle" type="Marker2D" parent="."]
-position = Vector2(-30, -2)
+[node name="LeftMuzzle" type="Marker2D" parent="." unique_id=1434053995]
+position = Vector2(-31.999998, -2)
 rotation = 0.0349066
 
-[node name="RightMuzzle" type="Marker2D" parent="."]
-position = Vector2(31, -2)
+[node name="RightMuzzle" type="Marker2D" parent="." unique_id=2102162200]
+position = Vector2(32, -2)
 rotation = -0.0349066
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1457550757]
 texture = ExtResource("1_xapkk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_udrlp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1813796753]
+libraries/ = SubResource("AnimationLibrary_udrlp")
 
-[node name="PlayerDeathExplosion" parent="." instance=ExtResource("5_v2kci")]
+[node name="PlayerDeathExplosion" parent="." unique_id=1266332761 instance=ExtResource("5_v2kci")]

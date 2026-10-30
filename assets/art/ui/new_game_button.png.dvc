@@ -1,0 +1,5 @@
+outs:
+- md5: 2ff48bb3b2812844baf4f242a3acc656
+  size: 6262
+  hash: md5
+  path: new_game_button.png

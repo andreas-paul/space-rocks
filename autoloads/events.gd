@@ -1,6 +1,6 @@
 extends Node
 
-signal score
+signal score(value: int)
 signal score_updated(score: int)
 signal reduce_player_health
 signal won
